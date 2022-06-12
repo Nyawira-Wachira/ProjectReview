@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterUserForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 # from django.http  import HttpResponse
 
 # Create your views here.
@@ -22,3 +23,22 @@ def Register(request):
 
 
         return render(request, 'authenticate/register.html',{'form':form} )
+
+def Login(request):
+    if request.user.is_authenticated:
+        return redirect('profile')
+    else:
+        if request.method =='POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('profile')
+
+            else:
+                messages.warning(request, 'Check username or password and try again')
+
+        return render(request, 'authenticate/login.html' )

@@ -1,14 +1,6 @@
 {% extends 'base.html'%}
 
  {% block content %} 
- <!-- <style>
-    body {
-      background-image: url();
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-    }
-    </style> -->
 
  <div class=container>
   <div class="d-flex justify-content-center form_container"> 
@@ -17,20 +9,18 @@
             <h2 class="mt-5" align="center">Sign Up</h2>    
             <form method="POST" action="" style="width: 450px;">
                 {% csrf_token %}
-                <div class="mt-4">
-                    <div class= "input-group mb-3">
-                        <div class="input-group-text">@</div>
-                        <input type="text" class="form-control" id="inlineFormInputGroupUsername" >
+                <div class="input-group mb-3">
+                    {{ form.username}}
+                </div>
+                    <div class="input-group mb-3">
+                        {{ form.email}}
                     </div>
-                    <div class="mb-4">
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <div class="input-group mb-3">
+                        {{ form.password1}}
                     </div>
-                    <div class="mb-4">
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div class="input-group mb-2">
+                        {{ form.password2}}       
                     </div>
-                    <div class="mb-3">
-                        <input type="password" class="form-control" id="exampleInputPassword2" >
-                        </div> 
                     <button type="submit" type="submit" class="btn btn-outline-primary mt-3">Register</button>
                 </form>
                 <div class="mt-4">
