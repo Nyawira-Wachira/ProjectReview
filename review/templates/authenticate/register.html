@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+
+ {% block content %} 
+ <!-- <style>
+    body {
+      background-image: url();
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    </style> -->
+
+ <div class=container>
+  <div class="d-flex justify-content-center form_container"> 
+    <div class="row"> 
+        <div class="col-md-12">
+            <h2 class="mt-5" align="center">Sign Up</h2>    
+            <form method="POST" action="" style="width: 450px;">
+                {% csrf_token %}
+                <div class="mt-4">
+                    <div class= "input-group mb-3">
+                        <div class="input-group-text">@</div>
+                        <input type="text" class="form-control" id="inlineFormInputGroupUsername" >
+                    </div>
+                    <div class="mb-4">
+                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    </div>
+                    <div class="mb-4">
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="exampleInputPassword2" >
+                        </div> 
+                    <button type="submit" type="submit" class="btn btn-outline-primary mt-3">Register</button>
+                </form>
+                <div class="mt-4">
+					<small>Already Have an account? <a href="" class="ml-2">Log in</a></small>
+				</div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder='Username';
+    form_fields[2].placeholder='Email';
+    form_fields[3].placeholder='Password';
+    form_fields[4].placeholder='Confirm Password';
+    
+    
+    for (var field in form_fields){	
+    form_fields[field].className += ' form-control'
+    }
+    </script>
+
+ {% endblock content %}
