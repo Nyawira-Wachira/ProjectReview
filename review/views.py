@@ -42,3 +42,8 @@ def Login(request):
                 messages.warning(request, 'Check username or password and try again')
 
         return render(request, 'authenticate/login.html' )
+
+def logoutUser(request):
+    logout(request)
+
+    return redirect('login')
