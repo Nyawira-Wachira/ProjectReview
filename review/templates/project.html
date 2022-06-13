@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+
+ {% block content %}
+
+ <div class="container my-5">
+    <div class="d-flex justify-content-center form_container">
+      <div class="row"> 
+        <div class="col-md-12">
+            <div class="card">
+                <h5 class="card-header" align="center" style="font-family:Oleo Script Swash Caps, cursive; font-size:35px;"> Post Project</h5>
+                <div class="card-body"> 
+                    <form method="POST" enctype="multipart/form-data" style="width:500px;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label" style="font-size:18px;"><strong> Project Title </strong></label>
+                            <div>
+                            {{form.title}}
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label" style="font-size:18px;"><strong> Landing Page Image </strong></label>
+                              <div>
+                              {{form.image}}
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label" style="font-size:18px;"><strong> Project Description </strong></label>
+                              <div>
+                              {{form.description}}
+                              </div>
+                          </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label" style="font-size:18px;"><strong> Project Live Link </strong></label>
+                          <div>
+                            {{ form.url}}
+                          </div>
+                        </div>
+                          <div class="form-group mt-4">
+                            <button class="btn btn-outline-primary" type="submit"> Post </button>
+                        </div>
+                      </form>              
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+ {% endblock %}
