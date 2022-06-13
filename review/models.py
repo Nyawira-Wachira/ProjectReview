@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+import uuid
 
 # Create your models here.
 def user_directory_path(instance, filename):
@@ -25,3 +26,17 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             img.save(self.profile_picture.path)   
 
+class Project(models.Model):
+    id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=80) 
+    image=models.ImageField(upload_to=user_directory_path, verbose_name='Picture', null=False)
+    description=models.TextField(max_length=300, verbose_name='Caption')
+    posted = models.DateTimeField(auto_now_add=True)
+    url = models.CharField(max_length=500)  
+
+
+    def __str__(self):
+        return self.caption
+    
+  
