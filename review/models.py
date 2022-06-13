@@ -34,11 +34,15 @@ class Project(models.Model):
     image=models.ImageField(upload_to=user_directory_path, verbose_name='Picture', null=False)
     description=models.TextField(max_length=300, verbose_name='Caption')
     posted = models.DateTimeField(auto_now_add=True)
-    url = models.URLField(max_length=500)  
+    url = models.URLField(max_length=500)
 
+    @classmethod
+    def search_by_title(cls,search_term):
+        projects = cls.objects.filter(title__icontains=search_term)
+        return projects
 
     def __str__(self):
-        return self.caption
+        return self.title
     
 
   
