@@ -22,8 +22,7 @@ def Register(request):
                 messages.success(request, "Account Created Successfully! You are now able to log in")
 
                 return redirect('login')
-
-
+            
         return render(request, 'authenticate/register.html',{'form':form} )
 
 def Login(request):
@@ -88,17 +87,16 @@ def Project(request):
             description = form.cleaned_data.get('description')
             url = form.cleaned_data.get('url')
 
-            p, created = Project.objects.get_or_create(title=title, image=image,description=description,url=url, user_id=user)
+            p = Project.objects.get_or_create(title=title, image=image,description=description,url=url, user_id=user)
             p.save()
             return redirect('home')
         else:
             form = NewProjectForm()
-
-        context = {
-		'form':form,
-	}
-
-    return render(request, 'project.html', context)
+    else:
+        form = NewProjectForm()
+   
+    
+    return render(request, 'project.html',  {'form': form})
 
 
 
