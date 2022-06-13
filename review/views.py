@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
-from .forms import RegisterUserForm,ProfileUpdateForm
+from .forms import RegisterUserForm,ProfileUpdateForm,NewProjectForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .models import Project
 # from django.http  import HttpResponse
 
 # Create your views here.
@@ -74,3 +75,32 @@ def ProfileUpdate(request):
         'p_form': p_form
     }
     return render(request, 'update_profile.html', context)
+
+@login_required
+def Project(request):
+    user = request.user.id
+
+    if request.method == 'POST':
+        form = NewProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            title = form.cleaned_data.get('title')
+            image = form.cleaned_data.get('image')
+            description = form.cleaned_data.get('description')
+            url = form.cleaned_data.get('url')
+
+            p, created = Project.objects.get_or_create(title=title, image=image,description=description,url=url, user_id=user)
+            p.save()
+            return redirect('home')
+        else:
+            form = NewProjectForm()
+
+        context = {
+		'form':form,
+	}
+
+    return render(request, 'project.html', context)
+
+
+
+    
+ 

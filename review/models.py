@@ -33,7 +33,7 @@ class Project(models.Model):
     image=models.ImageField(upload_to=user_directory_path, verbose_name='Picture', null=False)
     description=models.TextField(max_length=300, verbose_name='Caption')
     posted = models.DateTimeField(auto_now_add=True)
-    url = models.CharField(max_length=500)  
+    url = models.URLField(max_length=500)  
 
 
     def __str__(self):
