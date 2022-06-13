@@ -40,7 +40,7 @@ def Login(request):
                 return redirect('profile')
 
             else:
-                messages.warning(request, 'Check username or password and try again')
+                messages.error (request, 'Check username or password and try again')
 
         return render(request, 'authenticate/login.html' )
 
@@ -73,4 +73,4 @@ def ProfileUpdate(request):
     context = {
         'p_form': p_form
     }
-    return render(request, 'update.html', context)
+    return render(request, 'update_profile.html', context)
