@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+
+{% block content %} 
+   
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">     
+    <p>{{message}}</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  {% endfor %} 
+</div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6">
+      <img style=" border-radius: 50%; width: 200px; height: 185px;" src="{{user.profile.profile_picture.url}}" alt="">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.username }}</h2>
+          <p class="text-secondary">{{ user.email }}</p>
+        </div>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-6">
+        <legend class="border-bottom">Bio</legend>
+        <div class="card">
+          <div class="card-body">
+          {{user.profile.bio}}
+          </div>
+        </div><br>
+        <h6 style="font-size:19px;">Contact Details: <span class="text" style="color:dodgerblue; font-family:Arial, Helvetica, sans-serif; font-size:18px;">{{user.profile.contact_info}}</span></h6>        
+      </div>  
+    </div><br>   
+</div>
+
+
+{% endblock content %}
