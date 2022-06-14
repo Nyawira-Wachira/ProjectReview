@@ -24,7 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-gy)mf@5t01y_%8jb*-)n(=++mer#aa&octw!$9-7^1&a1n%#2$'
+
+SECRET_KEY = 'django-insecure-gy)mf@5t01y_%8jb*-)n(=++mer#aa&octw!$9-7^1&a1n%#2$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -81,8 +82,8 @@ WSGI_APPLICATION = 'ProjectReview.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-MODE=config("MODE", default="dev")
-SECRET_KEY = config('SECRET_KEY')
+
+
 
 # development
 if config('MODE')=="dev":
