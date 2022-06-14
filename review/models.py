@@ -4,6 +4,7 @@ from PIL import Image
 from django.urls import reverse
 import uuid
 
+
 # Create your models here.
 def user_directory_path(instance, filename):
     return 'user_{0}/{1}'.format(instance.user.id, filename)
@@ -40,9 +41,7 @@ class Project(models.Model):
     def search_by_title(cls,search_term):
         projects = cls.objects.filter(title__icontains=search_term)
         return projects
-
-    def __str__(self):
-        return self.title
+   
     
 
   
