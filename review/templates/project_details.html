@@ -3,14 +3,14 @@
  {% block content %}
 
  <div class="container my-5">
-    <a href="{% url 'profile' %}" class="btn btn-outline-info my-3">Profile</a>
-  <div class="d-flex justify-content-center form_container">
+    <a href="{% url 'home' %}" class="btn btn-outline-info mb-3">Home</a>
+    <div class="d-flex justify-content-center form_container">
     <div class="row">
         <div class="col">
-          <div class="col-md-12">               
+          <div class="col-md-10">
             <img style="height:350px;"src="{{project.image.url}}" class="card-img-top" alt="..."></a>
           </div><br>
-          <div class="col-md-12">    
+          <div class="col-md-10">    
             <div class="card">
                 <div class="card-body">
                     <p style="font-family: Satisfy, cursive;  font-size:20px; color:midnightblue;">@{{project.user.username}}</p>

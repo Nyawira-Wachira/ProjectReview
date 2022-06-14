@@ -84,6 +84,7 @@ def ProfileUpdate(request):
 
 @login_required
 def Project(request):
+    from .models import Project
     user = request.user.id
 
     if request.method == 'POST':
@@ -94,11 +95,10 @@ def Project(request):
             description = form.cleaned_data.get('description')
             url = form.cleaned_data.get('url')
 
-            p = Project.objects.get_or_create(title=title, image=image,description=description,url=url, user_id=user)
+            p, created = Project.objects.get_or_create(title=title, image=image,description=description,url=url, user_id=user)
             p.save()
             return redirect('home')
-        else:
-            form = NewProjectForm()
+        
     else:
         form = NewProjectForm()
    

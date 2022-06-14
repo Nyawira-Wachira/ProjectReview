@@ -37,10 +37,7 @@
       <div class="col-md-4 mb-3">
           <div class="card">
             <a href="{% url 'projectdetails' project.id %}"><img src="{{project.image.url}}" style="height: 230px;" class="card-img-top" alt="..."></a>
-              <div class="card-body"> 
-                <p class="card-text" style="font-family: Oleo Script Swash Caps, cursive; font-size:25px; color:midnightblue;">{{project.title}}</p>               
-                <p class="card-text">{{project.description}}</p>
-                <a href="{{project.url}}"><p class="card-text">{{project.url}}</p></a><br>              
+              <div class="card-body">              
                 <small><strong>{{project.posted}}</strong></small>                                             
               </div>
           </div>
