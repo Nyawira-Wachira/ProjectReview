@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
-from .models import Profile,Project, Review
+from .models import Profile,Project
 
 
 class RegisterUserForm(UserCreationForm):
@@ -24,12 +24,3 @@ class NewProjectForm(forms.ModelForm):
         model = Project
         fields = ('title', 'image', 'description', 'url')
 
-class ReviewForm(forms.ModelForm):
-    design = forms.IntegerField(required=True)
-    usability = forms.IntegerField(required=True)
-    content = forms.IntegerField(required=True)
-   
-
-    class Meta:
-        model = Review
-        fields = ('design', 'usability', 'content')

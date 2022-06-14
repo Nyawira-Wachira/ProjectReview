@@ -13,7 +13,6 @@ urlpatterns=[
     path('project/',views.Project, name='project'),
     path('search/', views.search_results, name='search_results'),
     path('<uuid:project_id>/',views.ProjectDetails, name='projectdetails'),
-
 ]
 
 if settings.DEBUG:

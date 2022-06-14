@@ -46,13 +46,10 @@ class Project(models.Model):
         projects = cls.objects.filter(title__icontains=search_term)
         return projects
 
-class Review(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='reviews')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    design = models.IntegerField()
-    usability = models.IntegerField() 
-    content = models.IntegerField()
-    date = models.DateTimeField(auto_now_add=True)
-   
+    def __str__(self):
+        return self.title
+
+
+
 
   
