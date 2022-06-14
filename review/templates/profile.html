@@ -34,9 +34,9 @@
 <div class="container my-5">
   <div class="row">
       {% for project in projects %}
-      <div class="col-md-4 mb-3">
+      <div class="col-md-6 mb-3">
           <div class="card">
-            <a href="{% url 'projectdetails' project.id %}"><img src="{{project.image.url}}" style="height: 230px;" class="card-img-top" alt="..."></a>
+            <a href="{% url 'projectdetails' project.id %}"><img src="{{project.image.url}}" style="height: 300px;" class="card-img-top" alt="..."></a>
               <div class="card-body">              
                 <small><strong>{{project.posted}}</strong></small>                                             
               </div>
