@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-gy)mf@5t01y_%8jb*-)n(=++mer#aa&octw!$9-7^1&a1n%#2$
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = []
 
 # Application definition
 
