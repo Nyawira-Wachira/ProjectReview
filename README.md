@@ -25,7 +25,6 @@ The application has a user profile page that displays user details like the prof
 * Fork this repository to your github account.
 * Open the terminal on your pc and navigate to the specific folder location that you want this directory to be stored.
 * Clone the forked repository in your account to the specific folder chosen, through the git clone command.
-         $ git clone https://github.com/Nyawira-Wachira/ProjectReview 
 * Navigate to the specific location you cloned the project into.
 * Open the project using vs code using command code . or atom . depending on the text editor you're using.
 * Activate the virtual environment.
