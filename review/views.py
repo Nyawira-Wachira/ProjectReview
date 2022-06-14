@@ -1,11 +1,14 @@
-from django.shortcuts import render,redirect
+from urllib import request
+from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterUserForm,ProfileUpdateForm,NewProjectForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Project,Profile
-# from django.http  import HttpResponse
+from django.template import loader
+from django.urls import reverse, resolve
+from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
 
@@ -115,3 +118,30 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+
+
+@login_required
+def ProjectDetails(request, project_id):
+    from .models import Project
+    project = Project.objects.get(id=project_id)
+    user = request.user
+
+    return render(request, 'project_details.html',{'project':project})
+
+def home(request):
+    from .models import Project
+    user=request.user
+
+    project_items = Project.objects.all().order_by('-posted')
+
+    template=loader.get_template('home.html')
+
+    context= {
+        'project_items': project_items,
+
+    }
+
+    return HttpResponse(template.render(context, request))    
+   
+    
+	
