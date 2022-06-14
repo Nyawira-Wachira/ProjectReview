@@ -56,7 +56,7 @@ There are currently no known bugs.
 If the application malfunctions or develops a problem, feel free to contact me through email at abigailwachira@gmail.com
 
 
-### License
+## License
 
 This project is under the:
 
@@ -81,3 +81,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+**Copyright (c) 2022 Nyawira Wachira**
