@@ -29,9 +29,25 @@
         <h6 style="font-size:19px;">Contact Details: <span class="text" style="color:dodgerblue; font-family:Arial, Helvetica, sans-serif; font-size:18px;">{{user.profile.contact_info}}</span></h6>        
       </div>  
     </div><br>  
-    <a href="{% url 'update' %}"><button type="button" class="btn btn-outline-primary">Edit Profile</button></a>
-   
+    <a href="{% url 'update' %}"><button type="button" class="btn btn-outline-primary">Edit Profile</button></a>   
 </div>
+<div class="container my-5">
+  <div class="row">
+      {% for project in projects %}
+      <div class="col-md-4 mb-3">
+          <div class="card">
+            <a href=""><img src="{{project.image.url}}" style="height: 230px;" class="card-img-top" alt="..."></a>
+              <div class="card-body"> 
+                <p class="card-text" style="font-family: Oleo Script Swash Caps, cursive; font-size:25px; color:midnightblue;">{{project.title}}</p>               
+                <p class="card-text">{{project.description}}</p>
+                <a href="https://bikehire1.herokuapp.com/"><p class="card-text">{{project.url}}</p></a><br>              
+                <small><strong>{{project.posted}}</strong></small>                                             
+              </div>
+          </div>
+      </div>
+      {%  endfor %}
+  </div>
+</div>    
 
 
 {% endblock content %}

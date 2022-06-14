@@ -4,6 +4,10 @@ from PIL import Image
 from django.urls import reverse
 import uuid
 
+from django.db.models.signals import post_save
+from django.utils.text import slugify
+from django.urls import reverse
+
 
 # Create your models here.
 def user_directory_path(instance, filename):

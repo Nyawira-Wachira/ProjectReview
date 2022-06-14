@@ -4,7 +4,7 @@ from .forms import RegisterUserForm,ProfileUpdateForm,NewProjectForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Project
+from .models import Project,Profile
 # from django.http  import HttpResponse
 
 # Create your views here.
@@ -52,9 +52,13 @@ def UserLogout(request):
 
 @login_required
 def UserProfile(request):
+    from .models import Project
     user=request.user
+    projects= Project.objects.filter(user=user).order_by('-posted')
 
-    return render(request, 'profile.html')
+
+    return render(request, 'profile.html',{'projects':projects} )
+
 
 @login_required
 def ProfileUpdate(request):
