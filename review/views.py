@@ -1,13 +1,13 @@
 from urllib import request
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
-from .forms import RegisterUserForm,ProfileUpdateForm,NewProjectForm
+from .forms import RegisterUserForm,ProfileUpdateForm,NewProjectForm,ReviewForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Project,Profile
 from django.template import loader
 from django.urls import reverse, resolve
+from .models import Project,Profile,Review
 from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
@@ -123,8 +123,30 @@ def ProjectDetails(request, project_id):
     from .models import Project
     project = Project.objects.get(id=project_id)
     user = request.user
+    reviews=Review.objects.filter(project=project).order_by('date')
 
-    return render(request, 'project_details.html',{'project':project})
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+                    review = form.save(commit=False)
+                    review.project = project
+                    review.user = user
+                    review.save()
+                    return HttpResponseRedirect(reverse('projectdetails', args=[project_id]))
+                    
+    else:
+        form = ReviewForm()
+
+    template = loader.get_template('project_details.html')
+    context = {
+		'project':project,
+		'form':form,
+		'reviews':reviews,
+	}
+
+    return HttpResponse(template.render(context, request))
+
+    # return render(request, 'project_details.html',{'project':project})
 
 def home(request):
     from .models import Project

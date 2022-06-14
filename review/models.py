@@ -46,7 +46,7 @@ class Project(models.Model):
         projects = cls.objects.filter(title__icontains=search_term)
         return projects
 
-class Reviews(models.Model):
+class Review(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='reviews')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     design = models.IntegerField()
