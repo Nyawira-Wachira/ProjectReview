@@ -113,14 +113,12 @@ def search_results(request):
         searched_projects = Project.search_by_title(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"articles": searched_projects})
+        return render(request, 'search.html',{"message":message,"projects": searched_projects})
 
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
 
-
-@login_required
 def ProjectDetails(request, project_id):
     from .models import Project
     project = Project.objects.get(id=project_id)
@@ -132,16 +130,9 @@ def home(request):
     from .models import Project
     user=request.user
 
-    project_items = Project.objects.all().order_by('-posted')
+    projects = Project.objects.all().order_by('-posted')
 
-    template=loader.get_template('home.html')
 
-    context= {
-        'project_items': project_items,
-
-    }
-
-    return HttpResponse(template.render(context, request))    
-   
-    
+    return render(request, 'home.html',{'projects':projects} )
+  
 	

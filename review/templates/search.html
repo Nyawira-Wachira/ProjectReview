@@ -13,16 +13,16 @@
     </div>
   
     {% if projects %}
-        <a href="{% url '' %}" class="btn btn-outline-info my-3">Go back</a>
+        <a href="{% url 'home' %}" class="btn btn-outline-info my-3">Go back</a>
     </div>
     {% for project in projects %}
     <div class="container">
         <div class="row">
               <div class="col-md-12 mb-5"> 
-                  <h3 align="center" style="font-family: Satisfy, cursive;">{{project.title}}</h3> 
+                  <h3 align="center" style="font-family: Oleo Script Swash Caps, cursive;">{{project.title}}</h3> 
               </div>
         </div> 
-        {% for image in project.image_set.all %} 
+       
         <div class="row">
          <div class="col-md-6 mb-5">
             <div class="card">    
@@ -32,14 +32,14 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <p style="font-family: Satisfy, cursive; font-size:25px;">Name: {{project.title}}</p>
-                        <p style="font-family: Satisfy, cursive; font-size:25px;">Description: {{project.description}}</p>
-                        <p style="font-family: Satisfy, cursive; font-size:25px;">Description: {{project.url}}</p>
+                        <p style="font-family: Satisfy, cursive; font-size:25px;">Title: {{project.title}}</p>
+                        <p>{{project.description}}</p>
+                        <a href="{{project.url}}"><p>{{project.url}}</p></a>
                     </div>
                 </div>
             </div>
         </div>
-        {% endfor %}
+       
     </div> 
       {% endfor %}
   

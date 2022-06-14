@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+    <div class="d-flex justify-content-center">
+    <div class="row">
+        <div class="col-12">
+        {% for project in projects %}
+            <div class="card my-5">             
+                <a href="{% url 'projectdetails' project.id %}"><img src="{{project.image.url}}" class="card-img-top" alt="..."></a>
+                <div class="card-body">                  
+                    <p class="card-text">{{project.title}}</p>
+                <strong><small>{{project.posted}}</small></strong>   
+               
+             </div>
+            </div>                    
+        {% endfor %}
+      
+
+    </div>
+    </div>
+</div>
+</div>
+ {% endblock %}
