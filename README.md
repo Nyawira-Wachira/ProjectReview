@@ -6,7 +6,7 @@
 
 ## Description
 
-ProjectReview is a Django application that allows users to view and rate projects posted by others and to post their own projects for others to review. The application has an authentication system that allows users to sign up and login to use the main
+ProjectReview is a Django application that allows users to view projects posted by others and to post their own projects for others to review. The application has an authentication system that allows users to sign up and login to use the main
 features of the application like posting a project and rating projects posted by others. ProjectReview allows users to view posted projects on the home page, to view project details of each project by clicking them and to review those projects. It also allows users to post their 
 projects with a description of the project and a live link for the hosted application.
 The application has a user profile page that displays user details like the profile picture, username, login user email and the bio on login. Users can change their profile picture and edit the bio to their preference.
